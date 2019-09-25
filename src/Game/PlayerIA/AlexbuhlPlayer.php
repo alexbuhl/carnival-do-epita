@@ -18,7 +18,7 @@ class AlexbuhlPlayer extends Player
     public function getChoice()
     {
         if($this->result->getNbRound() > 0){
-            if($this->result->getNbRound() > 10 && $this->result->getNbRound() % 2 == 0) {
+            if($this->result->getNbRound() > 10 && $this->result->getNbRound() % 3 == 0) {
                 if ($this->result->getStatsFor($this->opponentSide)['scissors'] / $this->result->getNbRound() > 0.5) {
                     return parent::rockChoice();
                 }
@@ -31,10 +31,19 @@ class AlexbuhlPlayer extends Player
             }
             switch ($this->result->getLastChoiceFor($this->opponentSide)){
                 case 'scissors':
+                    if($this->result->getLastChoiceFor($this->mySide) == 'scissors'){
+                        return parent::paperChoice();
+                    }
                     return parent::rockChoice();
                 case 'paper':
+                    if($this->result->getLastChoiceFor($this->mySide) == 'paper'){
+                        return parent::rockChoice();
+                    }
                     return parent::scissorsChoice();
                 case 'rock':
+                    if($this->result->getLastChoiceFor($this->mySide) == 'rock'){
+                        return parent::scissorsChoice();
+                    }
                     return parent::paperChoice();
             }
         }
