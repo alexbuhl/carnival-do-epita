@@ -5,13 +5,13 @@ namespace Hackathon\PlayerIA;
 use Hackathon\Game\Result;
 
 /**
- * Class alexbuhlPlayer
+ * Class Player
  * @package Hackathon\PlayerIA
  *
  * This abstract class give a panel of function
  * You don't have to override functions expect getChoice
  */
-abstract class alexbuhlPlayer
+abstract class Player
 {
     /**
      * Stupid Function -- The only one, you can override !
@@ -27,7 +27,7 @@ abstract class alexbuhlPlayer
      */
     public function getName()
     {
-        return str_replace('Hackathon\\IA\\', "", str_replace("alexbuhlPlayer", "", get_class($this)));
+        return str_replace('Hackathon\\IA\\', "", str_replace("Player", "", get_class($this)));
     }
 
     /**
@@ -97,7 +97,7 @@ abstract class alexbuhlPlayer
         $oppoStat= $this->result->getStatsFor(($this->opponentSide));
 
         echo "(", $this->result->getNbRound(), ") Last round ", $myStat['name'], " plays ", $this->result->getLastChoiceFor($this->mySide), " \t ",
-                                                                $oppoStat['name'], " plays ", $this->result->getLastChoiceFor($this->opponentSide), PHP_EOL, "\t",
-            $myStat['name'], " :  ", $this->result->getLastScoreFor($this->mySide), " \t ", $oppoStat['name'], " : ", $this->result->getLastScoreFor($this->opponentSide), PHP_EOL;
+        $oppoStat['name'], " plays ", $this->result->getLastChoiceFor($this->opponentSide), PHP_EOL, "\t",
+        $myStat['name'], " :  ", $this->result->getLastScoreFor($this->mySide), " \t ", $oppoStat['name'], " : ", $this->result->getLastScoreFor($this->opponentSide), PHP_EOL;
     }
 };

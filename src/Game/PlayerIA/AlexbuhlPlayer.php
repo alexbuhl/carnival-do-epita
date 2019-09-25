@@ -17,6 +17,16 @@ class AlexbuhlPlayer extends Player
 
     public function getChoice()
     {
+        if ($this->result->getLastChoiceFor($this->mySide) != '0'){
+            switch ($this->result->getLastChoiceFor($this->opponentSide)){
+                case 'scissors':
+                    return parent::rockChoice();
+                case 'paper':
+                    return parent::scissorsChoice();
+                case 'rock':
+                    return parent::paperChoice();
+            }
+        }
         // -------------------------------------    -----------------------------------------------------
         // How to get my Last Choice           ?    $this->result->getLastChoiceFor($this->mySide) -- if 0 (first round)
         // How to get the opponent Last Choice ?    $this->result->getLastChoiceFor($this->opponentSide) -- if 0 (first round)
@@ -41,6 +51,6 @@ class AlexbuhlPlayer extends Player
         // How can i display the result of each round ? $this->prettyDisplay()
         // -------------------------------------    -----------------------------------------------------
         
-        return parent::paperChoice();            
+        return parent::rockChoice();
   }
 };
