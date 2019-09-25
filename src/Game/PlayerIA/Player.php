@@ -5,13 +5,13 @@ namespace Hackathon\PlayerIA;
 use Hackathon\Game\Result;
 
 /**
- * Class Player
+ * Class alexbuhlPlayer
  * @package Hackathon\PlayerIA
  *
  * This abstract class give a panel of function
  * You don't have to override functions expect getChoice
  */
-abstract class Player
+abstract class alexbuhlPlayer
 {
     /**
      * Stupid Function -- The only one, you can override !
@@ -27,7 +27,7 @@ abstract class Player
      */
     public function getName()
     {
-        return str_replace('Hackathon\\IA\\', "", str_replace("Player", "", get_class($this)));
+        return str_replace('Hackathon\\IA\\', "", str_replace("alexbuhlPlayer", "", get_class($this)));
     }
 
     /**
