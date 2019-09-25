@@ -18,7 +18,7 @@ class AlexbuhlPlayer extends Player
     public function getChoice()
     {
         if($this->result->getNbRound() > 0){
-            if($this->result->getNbRound() > 10 && $this->result->getNbRound() % 3 == 0) {
+            if($this->result->getNbRound() > 10 && $this->result->getNbRound() % 3 == 0) { // if pour la "prédiction" des données
                 if ($this->result->getStatsFor($this->opponentSide)['scissors'] / $this->result->getNbRound() > 0.5) {
                     return parent::rockChoice();
                 }
@@ -29,9 +29,9 @@ class AlexbuhlPlayer extends Player
                     return parent::scissorsChoice();
                 }
             }
-            switch ($this->result->getLastChoiceFor($this->opponentSide)){
+            switch ($this->result->getLastChoiceFor($this->opponentSide)){ // contre du dernier coup de l'adversaire
                 case 'scissors':
-                    if($this->result->getLastChoiceFor($this->mySide) == 'scissors'){
+                    if($this->result->getLastChoiceFor($this->mySide) == 'scissors'){ // contre brain si l'adversaire utilise la même technique ¯\_(*-*)_/¯
                         return parent::paperChoice();
                     }
                     return parent::rockChoice();
@@ -70,7 +70,6 @@ class AlexbuhlPlayer extends Player
         // -------------------------------------    -----------------------------------------------------
         // How can i display the result of each round ? $this->prettyDisplay()
         // -------------------------------------    -----------------------------------------------------
-        
         return parent::rockChoice();
   }
 };
